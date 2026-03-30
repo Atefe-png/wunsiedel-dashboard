@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POI Clustering Dashboard – Wunsiedel</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Dashboard Styles -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ── HEADER BANNER ── -->
+<div class="banner">
+  <h1>POI Clustering Dashboard</h1>
+  <p>Landkreis Wunsiedel im Fichtelgebirge &nbsp;·&nbsp; OSM Nov 2025 &nbsp;·&nbsp; 2,673 POIs &nbsp;·&nbsp; 107 fclasses</p>
+  <div class="badge">Masterarbeit · Atefeh Zaeemi · BHT 2026</div>
+</div>
+
+<div class="layout">
+
+  <!-- ── LEFT PANEL ── -->
+  <div class="lpanel">
+
+    <!-- Method Tabs -->
+    <div class="pb">
+      <div class="ptitle">Clustering Method</div>
+      <div class="tabs">
+        <div class="tab on" id="t-km"  onclick="setMethod('km')">K-Means</div>
+        <div class="tab"    id="t-db"  onclick="setMethod('db')">DBSCAN</div>
+        <div class="tab"    id="t-hdb" onclick="setMethod('hdb')">HDBSCAN</div>
+      </div>
+    </div>
+
+    <!-- Method Statistics -->
+    <div class="pb">
+      <div class="ptitle">Method Statistics</div>
+      <table class="st">
+        <tr><td>Zones</td>               <td id="sz">—</td></tr>
+        <tr><td>Noise POIs</td>          <td id="sn">—</td></tr>
+        <tr><td>Noise %</td>             <td id="snp">—</td></tr>
+        <tr><td>Total W<sub>c</sub></td> <td id="sw">—</td></tr>
+        <tr><td>CV (W<sub>c</sub>)</td>  <td id="scv">—</td></tr>
+        <tr class="sep"><td>Parameter</td><td id="sp">—</td></tr>
+      </table>
+      <!-- Visual noise indicator -->
+      <div class="nbar"><div class="nfill" id="nb" style="width:0"></div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="pb">
+      <div class="ptitle">Filters</div>
+      <select id="sf" onchange="draw()">
+        <option value="">All fclasses (107)</option>
+      </select>
+      <select id="sc" onchange="draw()">
+        <option value="">All categories</option>
+      </select>
+      <label class="cbrow">
+        <input type="checkbox" id="cbc" onchange="draw()" checked>
+        Color by cluster
+      </label>
+      <label class="cbrow">
+        <input type="checkbox" id="cbn" onchange="draw()" checked>
+        Show noise (−1)
+      </label>
+      <div class="cnt" id="pcnt">— POIs shown</div>
+    </div>
+
+    <!-- Category Legend -->
+    <div class="pb">
+      <div class="ptitle">Category Legend</div>
+      <div id="cleg"></div>
+    </div>
+
+    <!-- Selected POI Info -->
+    <div class="pb">
+      <div class="ptitle">Selected POI</div>
+      <div class="ibox" id="ibox">
+        <span style="color:#aaa">Click any point on the map</span>
+      </div>
+    </div>
+
+  </div><!-- /lpanel -->
+
+  <!-- ── MAP ── -->
+  <div id="map">
+    <div class="mctrl">
+      <button class="cbtn on" id="bvis" onclick="toggleVis()">● POIs visible</button>
+      <button class="cbtn" onclick="fitDistrict()">⤢ Full extent</button>
+    </div>
+    <div class="mfoot">↑ N &nbsp;|&nbsp; WGS84 / EPSG:4326</div>
+    <div class="msrc">Source: OpenStreetMap / Geofabrik (Nov 2025) · Masterarbeit Atefeh Zaeemi, BHT 2026</div>
+  </div>
+
+</div><!-- /layout -->
+
+<!-- ── SCRIPTS ── -->
+<!-- Leaflet JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- POI Data (2,673 points, all three cluster assignments) -->
+<script src="data.js"></script>
+<!-- App Logic -->
+<script src="app.js"></script>
+
+</body>
+</html>
