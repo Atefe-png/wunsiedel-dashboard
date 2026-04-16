@@ -9,7 +9,7 @@
 
 ---
 
-## 🗺️ What This Dashboard Shows
+##  What This Dashboard Shows
 
 An interactive Leaflet.js web map visualising **2,673 POIs** extracted from OpenStreetMap (Geofabrik extract, November 2025) for **Landkreis Wunsiedel im Fichtelgebirge**, Bavaria, Germany.
 
@@ -25,7 +25,7 @@ Each POI carries an **attraction weight W_c** calculated using the German Ver_Ba
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 ```
 wunsiedel-dashboard/
@@ -39,7 +39,7 @@ wunsiedel-dashboard/
 
 ---
 
-## 🚀 How to Run Locally
+##  How to Run Locally
 
 ### Option 1 — Direct in browser (simple)
 Open `index.html` directly in **Firefox** (Firefox allows local JS file loading).
@@ -66,7 +66,7 @@ See deployment section below.
 
 ---
 
-## 🌐 Deploy on GitHub Pages
+##  Deploy on GitHub Pages
 
 1. Push this folder to a GitHub repository
 2. Go to **Settings → Pages**
@@ -77,7 +77,7 @@ See deployment section below.
 
 ---
 
-## ✨ Dashboard Features
+##  Dashboard Features
 
 - **3 method tabs** — switch between K-Means / DBSCAN / HDBSCAN instantly
 - **Statistics panel** — zones, noise count, noise %, total W_c, CV per method
@@ -91,7 +91,7 @@ See deployment section below.
 
 ---
 
-## 📊 Data Sources
+## Data Sources
 
 | Source | Description |
 |--------|-------------|
@@ -101,7 +101,7 @@ See deployment section below.
 
 ---
 
-## 🛠️ Technologies
+##  Technologies
 
 - [Leaflet.js 1.9.4](https://leafletjs.com/) — interactive map
 - [CartoDB Positron](https://carto.com/basemaps/) — basemap tiles
@@ -110,7 +110,7 @@ See deployment section below.
 
 ---
 
-## 📝 Citation
+##  Citation
 
 If you use this dashboard or the underlying methodology, please cite:
 
